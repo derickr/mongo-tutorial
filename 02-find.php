@@ -4,7 +4,7 @@ $d = $m->tutorial;
 $c = $d->beer;
 
 $document = $c->findOne( [ 'beer_name' => 'USA Hells' ] );
-echo date_create( $document->created_at )->format( 'Y-m-d' ), "\n\n";
+echo date_create( $document['created_at'] )->format( 'Y-m-d' ), "\n\n";
 
 $cursor = $c->find(
 	[ 'rating_score' => [ '$gte' => '4.5' ] ],
