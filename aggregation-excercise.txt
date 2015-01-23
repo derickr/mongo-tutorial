@@ -1,0 +1,12 @@
+Excercise: Aggregation
+
+Write a script that uses the Aggregation Framework to:
+
+    List the average rating_score per beer_type
+
+    Only include types if there are more than 5 ratings
+
+    Sort by highest rated type
+
+    Show only the top 8
+
