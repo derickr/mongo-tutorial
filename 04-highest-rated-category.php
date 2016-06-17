@@ -1,5 +1,7 @@
 <?php
-$m = new MongoClient;
+require 'vendor/autoload.php';
+
+$m = new \MongoDB\Client;
 
 $c = $m->tutorial->beer;
 
@@ -20,7 +22,7 @@ $res = $c->aggregate( [
 	[ '$limit' => 8 ],
 ] );
 
-foreach( $res['result'] as $result )
+foreach( $res as $result )
 {
 	printf( "%s: %.2f\n", $result['_id'], $result['rating'] );
 }
