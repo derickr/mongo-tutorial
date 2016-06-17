@@ -1,5 +1,7 @@
 <?php
-$m = new MongoClient;
+require 'vendor/autoload.php';
+
+$m = new \MongoDB\Client;
 $d = $m->tutorial;
 $c = $d->beer;
 $c->drop();
@@ -11,6 +13,6 @@ foreach ( file( 'untappd.json' ) as $checkin )
 	{
 		$document->$field = (float) $document->$field;
 	}
-	$document->created_at = new MongoDate( strtotime( $document->created_at ) );
-	$c->insert( $document );
+	$document->created_at = new \MongoDB\BSON\UTCDateTime( strtotime( $document->created_at ) * 1000 );
+	$c->insertOne( $document );
 }
